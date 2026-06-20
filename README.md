@@ -1,14 +1,31 @@
-# Kidrove — AI & Robotics Summer Workshop
+🤖 Kidrove — AI & Robotics Summer Workshop
 
-A responsive workshop landing page + Express API built for Kidrove's children's education platform.
+A responsive workshop landing page with Express.js backend, built for Kidrove's children's education platform.
 
----
+🌐 Live Demo: https://kidover-workshop.onrender.com
 
-## 🗂️ Project Structure
 
-```
+📸 Features
+
+
+Hero Section — Workshop title, description, key stats, and Enroll CTA
+Workshop Details — Age group, duration, mode, fee, start date
+Learning Outcomes — 6 detailed outcome cards
+FAQ Accordion — Smooth open/close with 6 common questions
+Registration Form Modal — Slide-up with validation, loading state & success screen
+Fully Responsive — Mobile, tablet, and desktop
+
+
+
+🛠️ Tech Stack
+
+LayerTechnologyFrontendReact 18, Vite, Tailwind CSSBackendExpress.js, express-validatorDatabaseIn-memory (MongoDB-ready)DeployedRender (frontend + backend)
+
+
+🗂️ Project Structure
+
 kidrove-workshop/
-├── frontend/          # React + Vite + Tailwind CSS
+├── frontend/
 │   └── src/
 │       ├── App.jsx
 │       ├── components/
@@ -21,133 +38,85 @@ kidrove-workshop/
 │       │   └── Footer.jsx
 │       └── hooks/
 │           └── useEnquiryForm.js
-└── backend/           # Express.js REST API
+└── backend/
     └── server.js
-```
 
----
 
-## 🚀 Getting Started
+🚀 Run Locally
 
-### Backend
+Backend
 
-```bash
-cd backend
+bashcd backend
 npm install
-npm run dev       # Starts on http://localhost:5000
-```
+npm start        # http://localhost:5000
 
-### Frontend
+Frontend
 
-```bash
-cd frontend
+bashcd frontend
 npm install
-cp .env.example .env.local   # optionally set VITE_API_URL
-npm run dev       # Starts on http://localhost:3000
-```
+cp .env.example .env.local
+# set VITE_API_URL=http://localhost:5000
+npm run dev      # http://localhost:3000
 
----
 
-## 🔌 API Reference
+🔌 API Reference
 
-### `POST /api/enquiry`
+POST /api/enquiry
 
-Register a new workshop enquiry.
+Request Body:
 
-**Request Body:**
-```json
-{
+json{
   "name": "Priya Sharma",
   "email": "priya@example.com",
   "phone": "9876543210"
 }
-```
 
-**Success Response (201):**
-```json
-{
+Success (201):
+
+json{
   "success": true,
-  "message": "Thank you, Priya! Your enquiry has been received...",
+  "message": "Thank you, Priya! Your enquiry has been received.",
   "data": {
     "id": "1719123456789",
     "submittedAt": "2026-06-20T10:30:00.000Z"
   }
 }
-```
 
-**Validation Error Response (400):**
-```json
-{
+Validation Error (400):
+
+json{
   "success": false,
   "message": "Validation failed",
   "errors": [
     { "field": "email", "message": "Please enter a valid email address" }
   ]
 }
-```
 
-### `GET /api/enquiries`
+GET /api/enquiries — List all enquiries
 
-List all submitted enquiries (admin use).
+GET /health — Health check
 
-### `GET /health`
 
-Health check endpoint.
+🎁 Bonus Features
 
----
 
-## ✅ Features
+✅ Tailwind CSS
+✅ Client-side form validation with field-level errors
+✅ Loading spinner during API submission
+✅ Custom React hook (useEnquiryForm)
+✅ Animated modal with backdrop dismiss
+✅ Smooth scroll navigation
+✅ Mobile-first responsive design
+✅ Environment variable support via Vite
+✅ Deployed on Render
 
-- **Hero Section** with workshop title, description, key stats, and dual CTA buttons
-- **Workshop Details** with icon cards for age group, duration, mode, fee, start date
-- **Learning Outcomes** grid with 6 detailed outcomes
-- **FAQ Accordion** with 6 common questions (smooth open/close)
-- **Registration Form Modal** with:
-  - Client-side validation (name, email, 10-digit Indian phone)
-  - Loading spinner during submission
-  - Success & error states
-  - Animated slide-up on mobile
-- **Responsive** across mobile, tablet, and desktop
-- **Express API** with field validation via `express-validator`
 
----
 
-## 🎁 Bonus Features Implemented
+⚠️ Note on Free Tier
 
-- ✅ Tailwind CSS
-- ✅ Client-side form validation with field-level errors
-- ✅ Loading states on form submission
-- ✅ Custom React hook (`useEnquiryForm`) for clean form state management
-- ✅ Smooth scroll navigation
-- ✅ Mobile-first responsive design
-- ✅ Animated modal with backdrop
-- ✅ Environment variable support via Vite
+Backend is hosted on Render's free tier which sleeps after 15 minutes of inactivity. The first form submission after idle may take ~30 seconds to respond while the server wakes up. This is expected behaviour on the free plan.
 
----
 
-## 📦 Deployment
+👤 Author
 
-**Frontend → Vercel:**
-```bash
-cd frontend && npm run build
-# Deploy dist/ folder to Vercel or Netlify
-```
-
-**Backend → Railway / Render:**
-Set `PORT` environment variable. The server uses `process.env.PORT || 5000`.
-
-**MongoDB (Optional):**
-Replace the in-memory `enquiries` array in `server.js` with Mongoose. 
-Install: `npm install mongoose`
-Add: `MONGODB_URI=mongodb+srv://...` to your `.env`
-
----
-
-## 🛠️ Tech Stack
-
-| Layer    | Technology                    |
-|----------|-------------------------------|
-| Frontend | React 18, Vite, Tailwind CSS  |
-| Backend  | Express.js, express-validator |
-| Database | In-memory (MongoDB-ready)     |
-| Fonts    | Inter (Google Fonts)          |
+Built as part of the Kidrove frontend + backend assignment.
